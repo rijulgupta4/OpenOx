@@ -1,0 +1,26 @@
+name: openox
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.12
+  - pip
+  - numpy
+  - pandas
+  - pyarrow
+  - scipy
+  - statsmodels
+  - scikit-learn
+  - matplotlib
+  - seaborn
+  - jupyterlab
+  - notebook
+  - ipykernel
+  - pyyaml
+  - python-dotenv
+  - pytest
+  - ruff
+variables:
+  MKL_THREADING_LAYER: SEQUENTIAL
+  MKL_NUM_THREADS: "1"
+  OMP_NUM_THREADS: "1"
