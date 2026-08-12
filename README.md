@@ -1,59 +1,70 @@
 # OpenOx
 
-OpenOx is the code-only reproducibility repository for the pre-waveform V1 study of pulse-oximeter accuracy, occult hypoxemia, pigmentation, perfusion, and external transportability. The frozen V1 roadmap ends at decision D035.
+OpenOx is the code-only reproducibility repository for a completed research study of pulse-oximeter accuracy, occult hypoxemia, pigmentation, perfusion, and cross-cohort transportability. V1 was formally closed on 2026-08-12 at decision D036.
 
-## Release boundary
+> **Final status:** Research-complete; not clinically validated; eligible for independent external evaluation; closed to further retrospective tuning.
 
-This public repository contains analysis code, cleared notebooks, environment specifications, and decision documentation through D035. It intentionally contains no PhysioNet records, row-level predictions, participant or encounter identifiers, processed cohorts, serialized fitted models, or notebook outputs.
+## What the study found
 
-The analyses require separately authorized local access to:
+The enriched D028 model showed useful participant-grouped internal performance, but it did not transport cleanly to BOLD. A simpler pre-existing SpO2-only score transferred better but remained imperfect. Logistic recalibration of that score improved probability performance in BOLD, but BOLD outcomes were used to select and fit the recalibrator. It is therefore **model-updating evidence, not independent external validation**. ENCoDE supported only partial mechanistic replication and contained no events in the eligible risk-model denominator.
 
-- OpenOximetry Repository v1.1.1
-- BOLD v1.0
-- ENCoDE v1.0.0
+No model in this repository is authorized for clinical use. A third untouched cohort is required before making a transportability claim about the BOLD-updated score.
 
-These resources are not redistributed here. Each user must obtain access directly through PhysioNet and comply with the applicable credentialing, training, license, and data-use-agreement requirements. See [DATA_USE.md](DATA_USE.md).
+For the concise evidence hierarchy and claim boundaries, start with [Final status](docs/FINAL_STATUS.md). For the full chronological record, see [OpenOx_Project_Hub.md](OpenOx_Project_Hub.md).
 
-## Status at D035
+## Public-release boundary
 
-- The frozen compact model failed unchanged probability transport in BOLD.
-- A pre-existing SpO2-only diagnostic transported better but remained imperfect.
-- A bounded post-validation calibration comparison selected logistic intercept-plus-slope recalibration of the SpO2-only score.
-- D035 is model updating informed by BOLD outcomes, not a second external validation or a deployment-ready model.
-- All waveform-enabled development belongs to V2 and is outside this release.
+This repository contains reviewed source code, output-cleared notebooks, configuration templates, and aggregate decision documentation. It intentionally excludes:
 
-## Repository contents
+- PhysioNet source records and extracts;
+- participant, patient, encounter, or institutional identifiers;
+- processed cohorts, row-level predictions, and copied timestamps;
+- fitted model objects and model-derived row-level artifacts;
+- notebook outputs, figures generated from restricted rows, and rendered reports.
 
-- Numbered notebooks through `23_bold_recalibration_validation.ipynb`, with all outputs removed.
-- Notebook-construction scripts and independent QA scripts.
-- `src/config.py` for project-local configuration.
-- `OpenOx_Project_Hub.md` and `ROADMAP_updated.md` for the frozen decision history.
-- `PUBLIC_RELEASE_MANIFEST.csv` and `PUBLIC_RELEASE_AUDIT.md` documenting the release gate.
+The analyses require separately authorized access to OpenOximetry v1.1.1, BOLD v1.0, and ENCoDE v1.0.0. Access is not conveyed by this repository. Review [DATA_USE.md](DATA_USE.md) before downloading data or running code.
 
-## Local setup
+## Choose your path
 
-```powershell
-conda env create -f environment.yml
-conda activate openox
-Copy-Item .env.example .env
-```
+### Understand the completed project without data
 
-Place authorized local data under the ignored directories below, or adapt the local configuration without committing paths or data:
+1. Read [Final status](docs/FINAL_STATUS.md).
+2. Use [Repository guide](docs/REPOSITORY_GUIDE.md) to navigate the analysis chronology.
+3. Consult [ROADMAP_updated.md](ROADMAP_updated.md) and [OpenOx_Project_Hub.md](OpenOx_Project_Hub.md) for prespecification, decisions, negative findings, and limitations.
 
-```text
-data/external/openoximetry/
-data/external/bold/
-data/external/encode/
-```
+### Reproduce analyses with your own authorized data access
 
-Run notebooks from the repository root so project-relative paths resolve consistently. Generated `data/`, `outputs/`, model files, and row-level validation artifacts must remain local.
+1. Complete the applicable PhysioNet access requirements described in [DATA_USE.md](DATA_USE.md).
+2. Follow [Reproducibility guide](docs/REPRODUCIBILITY.md).
+3. Run notebooks from the repository root. Generated `data/`, `outputs/`, validation directories, and model files must remain local and uncommitted.
 
-## Reproducibility and claims
+### Contribute safely
 
-The repository preserves the analysis chronology and frozen decision boundaries. Expected hashes in validation scripts are integrity checks for the exact restricted source releases used locally; they do not grant data access. Aggregate results should be interpreted with the limitations documented in the project hub.
+Read [CONTRIBUTING.md](CONTRIBUTING.md), run `python release_check.py`, and inspect the complete staged diff. Never rely on `.gitignore` as the only confidentiality control.
 
-This code is for research reproducibility and does not provide medical advice, replace arterial blood-gas testing, or authorize clinical deployment.
+## Repository map
 
-## Citations
+| Path | Purpose |
+|---|---|
+| `01b_...ipynb` through `23_...ipynb` | Output-cleared chronological V1 notebooks |
+| `build_*.py` | Notebook construction and frozen workflow builders |
+| `qa_*.py` | Independent checks for selected late-stage analyses |
+| `src/` | Shared local configuration |
+| `docs/` | Final status, navigation, and reproduction guidance |
+| `OpenOx_Project_Hub.md` | Detailed decision and evidence history through D036 |
+| `ROADMAP_updated.md` | Frozen project roadmap and scope boundaries |
+| `DATA_USE.md` | Dataset-specific access, confidentiality, and citation rules |
+| `PUBLIC_RELEASE_AUDIT.md` | Public-release safety assessment |
+| `PUBLIC_RELEASE_MANIFEST.csv` | SHA-256 manifest of the reviewed public tree |
 
-Please cite the underlying PhysioNet resources and PhysioNet itself as described in [DATA_USE.md](DATA_USE.md). Publication-specific citation metadata for this repository can be added when the manuscript or archival release receives a stable identifier.
+The root-level chronological layout is retained intentionally because builders and notebooks refer to those names. The repository guide provides a task-oriented view without breaking the frozen workflow.
+
+## License and clinical disclaimer
+
+Original repository code and documentation are available under the [MIT License](LICENSE). The MIT license does **not** license or redistribute PhysioNet datasets, third-party records, or restricted derivatives; see [LICENSE_SCOPE.md](LICENSE_SCOPE.md).
+
+This repository is research software. It does not provide medical advice, replace arterial blood-gas testing, establish clinical utility, or authorize clinical deployment.
+
+## Citation
+
+Dataset citations and current PhysioNet requirements are listed in [DATA_USE.md](DATA_USE.md). Repository citation metadata is provided in [CITATION.cff](CITATION.cff); update it when a manuscript DOI or archival release DOI becomes available.

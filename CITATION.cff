@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "Please cite this repository and the version-specific PhysioNet datasets used in your analysis."
+title: "OpenOx: pulse-oximetry reliability and transportability analysis"
+type: software
+authors:
+  - family-names: Gupta
+    given-names: Rijul
+repository-code: "https://github.com/rijulgupta4/OpenOx"
+license: MIT
+version: "1.0.0"
+date-released: 2026-08-12
+keywords:
+  - pulse oximetry
+  - occult hypoxemia
+  - skin pigmentation
+  - model transportability
+  - reproducible research

@@ -1,7 +1,13 @@
-# Local configuration
+# Local configuration and credentials
 .env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.*
+secrets.*
 
-# Raw and derived data
+# Raw and derived data directories
 data/external/
 data/raw/*
 data/interim/*
@@ -10,46 +16,80 @@ data/processed/*
 !data/interim/.gitkeep
 !data/processed/.gitkeep
 
-# OpenOximetry source formats
-*.dat
-*.hea
-
-# Python
-__pycache__/
-*.py[cod]
-.pytest_cache/
-.ruff_cache/
-.ipynb_checkpoints/
-
-# Environments and editors
-.venv/
-venv/
-.vscode/
-.idea/
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# Temporary outputs
-*.tmp
-*.log
-
-# Generated analysis artifacts and restricted-data derivatives
+# Generated analysis and validation directories
 outputs/
 bold_external_validation/
 bold_spo2_baseline_validation/
 bold_recalibration_validation/
 encode_external_validation/
+
+# Clinical, tabular, array, database, model, and archive artifacts
 *.csv
 *.csv.gz
+*.tsv
+*.tsv.gz
+*.jsonl
+*.ndjson
 *.parquet
 *.feather
+*.arrow
+*.npy
+*.npz
+*.h5
+*.hdf5
+*.sqlite
+*.sqlite3
+*.db
+*.rds
+*.sav
 *.joblib
 *.pkl
 *.pickle
-*.pdf
-*.docx
+*.zip
+*.7z
+*.tar
+*.tgz
+*.gz
 
-# Keep only the reviewed public release manifest CSV
+# Waveforms, media, and rendered documents
+*.dat
+*.hea
+*.wav
+*.mp3
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.tif
+*.tiff
+*.bmp
+*.pdf
+*.doc
+*.docx
+*.xls
+*.xlsx
+*.ppt
+*.pptx
+
+# Keep only the reviewed public manifest CSV
 !PUBLIC_RELEASE_MANIFEST.csv
+
+# Python, notebooks, environments, and editors
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+.venv/
+venv/
+.vscode/
+.idea/
+
+# OS and temporary files
+.DS_Store
+Thumbs.db
+*.tmp
+*.temp
+*.log
+~$*
