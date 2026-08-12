@@ -2,8 +2,8 @@
 
 ## Pulse-oximeter reliability across device, pigmentation, and physiologic context
 
-**Updated:** 2026-08-04  
-**Current phase:** Outputs and manuscript - external validation is complete
+**Updated:** 2026-08-12
+**Current phase:** V1 formally closed at D036; research-complete and frozen
 
 ## Project purpose
 
@@ -17,7 +17,7 @@ OpenOx evaluates when pulse oximetry overestimates or underestimates arterial ox
 - Controlled-desaturation event frequencies are laboratory phenotypes, not clinical prevalence estimates.
 - Device codes remain opaque unless an authoritative crosswalk is obtained.
 - Regulatory comparisons are methodological benchmarks, not regulatory validation.
-- Waveform modeling remains an optional Version 2 after the tabular study and manuscript.
+- V2 waveform feasibility work was formally closed on 2026-08-11 because synchronization could not be validated; it is not an active extension.
 
 ## Progress overview
 
@@ -30,8 +30,8 @@ OpenOx evaluates when pulse oximetry overestimates or underestimates arterial ox
 | 4. Analytic core | Complete | Device, occult-hypoxemia, pigmentation, and perfusion/context analyses |
 | 5. Secondary predictive modeling | Complete | D028 compact ridge frozen; OpenOx-only enrichment models rejected |
 | 6. External transportability and validation | Complete | BOLD failed unchanged D028 probability transport; a post-validation SpO2-only diagnostic transported materially better but remained imperfect; ENCoDE provided partial high-saturation pigmentation replication and a zero-event risk gate |
-| 7. Outputs and manuscript | Pending | TRIPOD+AI-aligned report, figures, tables, code, and limitations |
-| V2. Waveform extension | Inventory complete; gated work underway | PPG signal quality and waveform-derived context; see [V2_WAVEFORM_MODEL_ROADMAP.md](V2_WAVEFORM_MODEL_ROADMAP.md) |
+| 7. Outputs and manuscript | Complete | D036 closeout, TRIPOD+AI/PROBAST+AI package, final figures/tables, model card, reproducibility and audit records |
+| V2. Waveform extension | Closed | Feasibility evidence preserved privately; synchronization was not validated and no waveform model was developed |
 
 ## Frozen analytic foundation
 
@@ -149,12 +149,12 @@ ENCoDE yielded only three pairs at SaO2 70-85%, so the lower-interval pigmentati
 - Report case-mix shift and miscalibration as scientific findings rather than concealing them.
 - Preserve the statement that the model flags risk and does not replace ABG testing.
 
-## Immediate next steps
+## Post-closeout next steps
 
-1. Freeze the D035 recalibration comparison and do not tune further on BOLD.
-2. Seek a third untouched cohort for the BOLD-fit SpO2-only logistic recalibrator; without one, retain it as a research update only.
-3. Assemble TRIPOD+AI/PROBAST+AI manuscript outputs covering OpenOx internal evidence, BOLD raw-transfer failure and updating, ENCoDE partial replication, and the 615-versus-521 release discrepancy.
-4. Continue the gated V2 waveform program in [V2_WAVEFORM_MODEL_ROADMAP.md](V2_WAVEFORM_MODEL_ROADMAP.md): Notebook 24 inventory is complete; resolve PPG provenance and synchronization before outcome modeling.
+1. Do not refit, retune, reselect, or optimize thresholds on OpenOx or BOLD.
+2. Evaluate the BOLD-fit SpO2-only logistic recalibrator only in a third untouched cohort under a new prespecified protocol.
+3. Preserve the 615-versus-521 ENCoDE reconstruction discrepancy for author/data-curator clarification; do not select a post hoc 521-row subset.
+4. Keep V2 closed. No further synchronization, simulation, feature development, power analysis, or outcome exposure is authorized under this project.
 
 ## Key limitations
 

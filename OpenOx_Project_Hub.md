@@ -1,9 +1,9 @@
 # OpenOx Project Hub
 
-Living project record for the OpenOx pulse-oximetry analysis. Update this document whenever a material methodological decision, result, limitation, dependency, or project milestone changes.
+Frozen project record for the completed OpenOx V1 pulse-oximetry analysis. Historical language is retained where it documents the chronology; D036 controls the final interpretation.
 
-**Last updated:** 2026-08-04  
-**Current phase:** Outputs and manuscript — external validation and diagnostic follow-up complete  
+**Last updated:** 2026-08-12
+**Current phase:** V1 formally closed at D036; research-complete and frozen
 **Environment:** Conda environment `openox`
 
 ## Project objective
@@ -15,7 +15,7 @@ Evaluate pulse-oximeter performance using paired SpO2 and arterial SaO2 measurem
 3. Pigmentation and non-disparate performance.
 4. Perfusion and physiologic context.
 
-Predictive modeling is secondary. Waveform analysis is reserved for a possible Version 2 after the tabular analysis and manuscript are complete.
+Predictive modeling is secondary. V2 waveform feasibility work was formally closed on 2026-08-11 and is not an active extension.
 
 ## Roadmap status
 
@@ -27,8 +27,8 @@ Predictive modeling is secondary. Waveform analysis is reserved for a possible V
 | Analytic core | Complete | Device performance, occult hypoxemia, pigmentation/non-disparate performance, and perfusion/physiologic context are complete. |
 | Secondary predictive modeling | Complete | The compact model is frozen and serialized for unchanged external evaluation; all enriched OpenOx-only models were rejected. |
 | External transportability and validation | Complete | BOLD failed unchanged D028 probability transport; a locked post-validation SpO2-only diagnostic transported materially better but remained imperfect. ENCoDE provided a partial high-saturation pigmentation replication but failed the low-saturation, exact-ITA-coverage, and occult-event gates. |
-| Outputs and manuscript | Pending | Report, figures, tables, limitations, and reproducibility materials. |
-| V2 waveform extension | Optional | Begin only after tabular work is complete. |
+| Outputs and manuscript | Complete | D036 closeout package, final report, figures, tables, model card, reporting checklists, reproducibility, and audit records. |
+| V2 waveform extension | Closed | Synchronization could not be validated; no waveform model was developed and the evidence remains outside V1. |
 
 ## Data snapshot
 
@@ -1189,11 +1189,19 @@ Logistic recalibration of the SpO2-only score was selected. Its median cross-fit
 
 D035 is model updating, not another external validation: BOLD outcomes were used for calibration and candidate selection. The final BOLD-fit logistic recalibrator is a research object that requires a third untouched cohort before any transport or deployment claim. No original coefficients were refit and no clinical threshold was optimized.
 
-## Immediate next steps
+## D036 — formal V1 closeout
 
-1. Freeze D035 as the V1 recalibration bridge; do not tune it further on BOLD.
+V1 is research-complete and frozen. The final closeout independently reverified the 28,693-pair cohort, 6,062-reading model denominator, 261 events from 38 event-positive participants, one-to-one predictor joins, participant-separated resampling, fold-contained preprocessing, and evidence-role separation. The deterministic closeout pipeline regenerated 15 tables and six figures; 16 automated tests, 14 scientific invariants, and 51 public/private closeout manifest entries passed at sign-off.
+
+The locked conclusion is: **Internal performance did not translate cleanly across cohorts. External recalibration improved the simpler SpO2-only model in BOLD, while richer predictor enrichment did not demonstrate reliable transportable benefit. Further independent validation is required before clinical use.**
+
+The BOLD-fitted recalibrator is model updating, not independent external validation. V1 may be reopened only for a verified implementation defect, a materially corrected source release, or a prespecified evaluation in a genuinely untouched cohort. V2 remains separately closed and outside the V1 execution path.
+
+## Post-closeout next steps
+
+1. Do not tune further on OpenOx or BOLD.
 2. Identify a third untouched cohort before treating the selected BOLD-fit recalibrator as transportable.
-3. Assemble TRIPOD+AI/PROBAST+AI manuscript outputs with D028 failure, the SpO2-only diagnostic and recalibration contrasts, source-event concentration, ENCoDE's partial high-saturation mechanistic replication, release-count discrepancy, and D029 non-verifiability prominent.
+3. Use the final D036 reporting package for dissemination while preserving raw-transfer failure and uncertainty.
 4. Keep the ENCoDE 615-versus-521 reconstruction question open for author/data-curator clarification; do not post hoc select 521 rows from v1.0.0.
 
 ## Change log
@@ -1229,3 +1237,4 @@ D035 is model updating, not another external validation: BOLD outcomes were used
 | 2026-08-04 | Accepted D032-D033; hash-verified and froze the ENCoDE crosswalk; reconstructed 615 protocol-conforming pairs; completed support-gated high-saturation forehead-MST and objective-ITA analyses with participant-cluster covariance and participant-balanced sensitivity; recorded the 615-versus-521 release discrepancy, three-pair low interval, 69.4% exact-ITA coverage, and zero-event risk gate; did not score D028. |
 | 2026-08-04 | Accepted D034 as post-validation diagnostic evidence; derived and locked the pre-existing SpO2-only OpenOx baseline from frozen tuning contexts, applied it unchanged to the identical BOLD denominator, completed paired 1,000-participant bootstrap and 18-check independent QA, and found materially better but still imperfect transport without model promotion. |
 | 2026-08-05 | Accepted D035 as post-validation model updating; compared four fixed recalibrators for both frozen BOLD scores with 20x5 patient-level cross-validation; selected logistic recalibration of SpO2-only, completed 1,000-replicate paired participant-bootstrap uncertainty and 15-check independent QA, and froze the result as a research bridge requiring a third untouched cohort. |
+| 2026-08-12 | Accepted D036; formally closed V1 as research-complete, preserved the negative external result, completed reporting/reproducibility/audit artifacts, and prohibited further retrospective tuning. V2 remains separately closed. |
