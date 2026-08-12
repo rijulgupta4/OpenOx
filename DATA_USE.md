@@ -38,7 +38,7 @@ Before every public push:
 - confirm notebooks contain no outputs, execution counts, or embedded attachments;
 - scan for secrets, personal paths, restricted filenames, and local metadata;
 - reject row-level CSV/TSV/JSONL, Parquet, database, array, model, image, waveform, archive, PDF, and office-document artifacts;
-- run `python release_check.py`;
+- run `python scripts/release_check.py`;
 - inspect the complete staged diff and file list.
 
 Questions about agreement interpretation belong with PhysioNet or qualified institutional/legal counsel. The repository audit is a technical confidentiality control, not legal advice.
