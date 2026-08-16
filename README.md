@@ -1,6 +1,6 @@
-# OpenOx
+# OpenOx Project
 
-OpenOx is a completed, code-only investigation of when pulse oximetry can mislead—and whether a risk model survives contact with a new clinical cohort. It covers device accuracy, occult hypoxemia, measured skin pigmentation, perfusion, and cross-cohort transportability. V1 was formally closed on 2026-08-12 at decision D036.
+OpenOx Project is a completed, code-only investigation of when pulse oximetry can mislead—and whether a risk model survives contact with a new clinical cohort. It covers device accuracy, occult hypoxemia, measured skin pigmentation, perfusion, and cross-cohort transportability. V1 was formally closed on 2026-08-12 at decision D036.
 
 > **Final status:** Research-complete; not clinically validated; eligible for independent external evaluation; closed to further retrospective tuning.
 
