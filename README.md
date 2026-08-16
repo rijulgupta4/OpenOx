@@ -6,31 +6,15 @@ OpenOx Project is a completed, code-only investigation of when pulse oximetry ca
 
 ## What the study found
 
-The enriched D028 model showed useful participant-grouped internal performance, but it did not transport cleanly to BOLD. A simpler pre-existing SpO2-only score transferred better but remained imperfect. Logistic recalibration improved its probability performance in BOLD, but because BOLD outcomes were used to select and fit the recalibrator, this is **model-updating evidence, not independent external validation**. ENCoDE supported only partial mechanistic replication and contained no events in the eligible risk-model denominator.
+Device error varied and was larger at lower arterial oxygen levels. Hidden low oxygen occurred despite apparently reassuring readings, and some device-specific results associated greater overestimation with darker measured skin pigmentation or lower perfusion. The richer risk model performed better internally but failed unchanged transport to BOLD; a simpler SpO2-only score transferred better, although imperfectly.
 
 No model in this repository is authorized for clinical use. A third untouched cohort is required before making a transportability claim about the BOLD-updated score.
 
-Start with the [results at a glance](docs/RESULTS.md), then use the [final status](docs/FINAL_STATUS.md) for the evidence hierarchy and claim boundaries. The [workflow map](docs/WORKFLOW_MAP.md) connects questions to notebooks and scripts, the [glossary](docs/GLOSSARY.md) defines study terminology, and the [project hub](docs/PROJECT_HUB.md) preserves the full decision record.
-
-## Study at a glance
-
-| Question | Evidence | Final interpretation |
-|---|---|---|
-| Did the richer compact model work internally? | Participant-grouped OpenOx validation | It improved ranking and probability loss over SpO2 alone, with calibration caution. |
-| Did it transfer unchanged? | Prespecified raw transfer to BOLD | No. It substantially overpredicted risk and discriminated poorly. |
-| Was a simpler score more portable? | Frozen OpenOx SpO2-only score applied to BOLD | Yes, comparatively, but it remained imperfect and exploratory. |
-| Did recalibration solve transportability? | BOLD outcome-informed recalibration | It improved BOLD probability performance, but it is model updating—not independent validation. |
-| Did ENCoDE validate the risk model? | ENCoDE feasibility and pigmentation replication | No risk validation was possible because the eligible denominator had zero events; pigmentation evidence was partial and inconclusive. |
-
-See [RESULTS.md](docs/RESULTS.md) for aggregate metrics and limitations. These summaries reproduce values already documented in the frozen decision record; no restricted rows or newly derived results are included.
+Read the [results at a glance](docs/RESULTS.md) for the full plain-language summary. Use the [final status](docs/FINAL_STATUS.md) for the governing claim boundaries and the [project hub](docs/PROJECT_HUB.md) only when the detailed decision history is needed.
 
 ## A waveform study that stopped at the timing stage
 
-A separate [waveform study](docs/WAVEFORM_STUDY.md) explored whether raw pulse signals could help explain errors in commercial pulse-oximeter readings.
-
-The waveforms came from a separate investigational recorder. The available timing information was not sufficient to match enough waveform sections reliably to individual SpO2 and reference SaO2 measurements. Because an incorrect match could produce misleading results, the study stopped before waveform characteristics were tested against measurement errors.
-
-This does not show that waveform methods are ineffective. It shows that the available records could not support this particular analysis reliably.
+A separate [waveform timing study](docs/WAVEFORM_STUDY.md) asked whether raw pulse signals from an investigational recorder could be matched reliably to the correct oxygen measurements. Only one of 18 targeted records passed the frozen timing rules and masked visual review, so the study stopped before linking outcomes or building a model. This was a stopped study, not a negative model result.
 
 ## Public-release boundary
 
@@ -48,7 +32,7 @@ The analyses require separately authorized access to OpenOximetry v1.1.1, BOLD v
 
 ### Understand the completed project without data
 
-1. Read the [final status](docs/FINAL_STATUS.md).
+1. Read the [results at a glance](docs/RESULTS.md), then the [final status](docs/FINAL_STATUS.md).
 2. Follow the stage table in the [repository guide](docs/REPOSITORY_GUIDE.md).
 3. Consult the frozen [roadmap](docs/ROADMAP.md) and [project hub](docs/PROJECT_HUB.md) for prespecification, decisions, negative findings, and limitations.
 
@@ -75,7 +59,8 @@ OpenOx V1 is closed to retrospective scientific expansion. Read [CONTRIBUTING.md
 | `scripts/qa/` | Independent checks for selected late-stage analyses |
 | `scripts/release_check.py` | Fail-closed public-tree scanner and manifest generator |
 | `src/` | Shared configuration and canonical repository paths |
-| `docs/` | Final status, project record, navigation, and reproduction guidance |
+| `docs/` | Results, final status, project record, navigation, and reproduction guidance |
+| `environment.lock.yml` | Exact recorded package snapshots for the frozen study stages |
 | `PUBLIC_RELEASE_MANIFEST.csv` | SHA-256 manifest of the reviewed public tree |
 
 The root is intentionally limited to project entry points, governance, environment, license, and release metadata.

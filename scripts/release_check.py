@@ -21,6 +21,10 @@ DENIED_SUFFIXES = {
     ".zip",
 }
 ALLOWED_CSV = {"PUBLIC_RELEASE_MANIFEST.csv"}
+ALLOWED_SVG = {
+    "docs/figures/model-transport.svg",
+    "docs/figures/timing-study-flow.svg",
+}
 ALLOWED_POST_D035_DOCS = {"docs/WAVEFORM_STUDY.md"}
 MANIFEST = ROOT / "PUBLIC_RELEASE_MANIFEST.csv"
 SKIP_DIRS = {
@@ -139,6 +143,8 @@ def main() -> None:
             problems.append(f"denied artifact type: {rel}")
         if path.suffix.lower() == ".csv" and path.name not in ALLOWED_CSV:
             problems.append(f"unreviewed CSV: {rel}")
+        if path.suffix.lower() == ".svg" and rel not in ALLOWED_SVG:
+            problems.append(f"unreviewed SVG: {rel}")
         if is_unreviewed_post_d035_file(rel, lower):
             problems.append(f"post-D035/V2 file: {rel}")
 
@@ -152,6 +158,10 @@ def main() -> None:
                     problems.append(f"personal absolute path: {rel}")
                 if SECRET.search(text):
                     problems.append(f"possible secret: {rel}")
+                if path.suffix.lower() == ".svg" and re.search(
+                    r"<image\b|(?:href|src)\s*=|data:|url\(", text, re.I
+                ):
+                    problems.append(f"embedded or externally linked SVG content: {rel}")
 
         if path.suffix.lower() == ".ipynb":
             notebook = json.loads(path.read_text(encoding="utf-8"))

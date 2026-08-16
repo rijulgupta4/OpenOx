@@ -94,3 +94,13 @@ def test_waveform_document_allowlist_is_narrow() -> None:
     assert release_check.is_unreviewed_post_d035_file(
         "docs/waveform_record_notes.md", "waveform_record_notes.md"
     )
+
+
+def test_public_svg_allowlist_is_narrow() -> None:
+    assert release_check.ALLOWED_SVG == {
+        "docs/figures/model-transport.svg",
+        "docs/figures/timing-study-flow.svg",
+    }
+    for relative_path in release_check.ALLOWED_SVG:
+        text = (ROOT / relative_path).read_text(encoding="utf-8")
+        assert not re.search(r"<image\b|(?:href|src)\s*=|data:|url\(", text, re.I)

@@ -20,6 +20,8 @@ cp .env.example .env
 
 Keep the deterministic thread settings from `environment.yml`. Edit `.env` only with local authorized paths; never commit it.
 
+[`environment.lock.yml`](../environment.lock.yml) preserves the exact package versions that were recorded for the final model artifact, closeout QA, and repeated-measures run. The project used stage-specific environments, and a complete historical solver export was not preserved. The lock file therefore distinguishes the recorded snapshots instead of pretending that one exact environment produced every artifact. `environment.yml` remains the practical environment specification for a new authorized rerun.
+
 ## 3. Place data locally
 
 The default templates expect:
@@ -49,6 +51,8 @@ python -m scripts.build.build_20_bold_external_validation
 Selected late-stage workflows have separate scripted checks under `scripts/qa/`, also run as modules. These are second-code-path consistency checks, not external peer review. Substantive external-cohort runners are under `scripts/analysis/` and should likewise be invoked with `python -m scripts.analysis.<runner_name>`. Do not run a later stage until its frozen local inputs exist and any embedded hash checks pass.
 
 The repository intentionally does not promise a one-command public rerun: distributing the required source data, processed cohorts, row-level predictions, or fitted objects would violate the public-release boundary. Reproducibility means an independently authorized user can inspect the full code path and rebuild locally under the same frozen rules.
+
+No synthetic dataset or demo pipeline is included. That is a deliberate scope decision: a synthetic workflow could demonstrate software execution, but it could not reproduce the study evidence or replace authorized access to the source datasets.
 
 ## 5. Validate the public tree
 
