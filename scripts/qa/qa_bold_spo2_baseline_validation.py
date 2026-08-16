@@ -1,3 +1,5 @@
+"""Recompute selected BOLD SpO2-only checks through a separate scripted path."""
+
 from __future__ import annotations
 
 import json
@@ -13,9 +15,10 @@ import pandas as pd
 from sklearn.metrics import average_precision_score, brier_score_loss, log_loss, roc_auc_score
 
 from scripts.analysis.bold_external_validation import calibration_intercept, calibration_slope, sha256
+from src.paths import PROJECT_ROOT
 
 
-ROOT = Path(r".")
+ROOT = PROJECT_ROOT
 OUT = ROOT / "bold_spo2_baseline_validation"
 
 

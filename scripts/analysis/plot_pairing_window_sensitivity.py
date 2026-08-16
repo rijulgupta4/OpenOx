@@ -1,11 +1,14 @@
+"""Render pairing-window summary figures from aggregate local tables."""
+
 from pathlib import Path
 import sys
 
 import pandas as pd
 from PIL import Image, ImageDraw, ImageFont
 
+from src.paths import PROJECT_ROOT
 
-project_root = Path(sys.argv[1]) if len(sys.argv) > 1 else Path.cwd()
+project_root = Path(sys.argv[1]).resolve() if len(sys.argv) > 1 else PROJECT_ROOT
 table_dir = project_root / "outputs" / "tables"
 figure_dir = project_root / "outputs" / "figures"
 figure_dir.mkdir(parents=True, exist_ok=True)
@@ -22,12 +25,18 @@ GRID = "#E5E7EB"
 BLACK = "#101828"
 WHITE = "#FFFFFF"
 
-FONT_REGULAR = r"C:\Windows\Fonts\arial.ttf"
-FONT_BOLD = r"C:\Windows\Fonts\arialbd.ttf"
+FONT_REGULAR = (Path(r"C:\Windows\Fonts\arial.ttf"), "DejaVuSans.ttf")
+FONT_BOLD = (Path(r"C:\Windows\Fonts\arialbd.ttf"), "DejaVuSans-Bold.ttf")
 
 
 def font(size, bold=False):
-    return ImageFont.truetype(FONT_BOLD if bold else FONT_REGULAR, size)
+    candidates = FONT_BOLD if bold else FONT_REGULAR
+    for candidate in candidates:
+        try:
+            return ImageFont.truetype(str(candidate), size)
+        except OSError:
+            continue
+    return ImageFont.load_default()
 
 
 def centered(draw, xy, text, text_font, fill=BLACK):
