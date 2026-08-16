@@ -1,11 +1,10 @@
+"""Compare locked OpenOx pairing windows using authorized local source data."""
+
 from pathlib import Path
-import sys
 
 import numpy as np
 import pandas as pd
 
-PROJECT_ROOT = Path(r".")
-sys.path.insert(0, str(PROJECT_ROOT))
 from src.config import get_source_data_dir
 
 source = get_source_data_dir()

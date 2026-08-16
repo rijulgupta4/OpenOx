@@ -1,3 +1,5 @@
+"""Recompute selected ENCoDE checks through a separate scripted path."""
+
 from __future__ import annotations
 
 import json
@@ -6,12 +8,10 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+from src.paths import PROJECT_ROOT
 
-PROJECT_ROOT = Path.cwd()
 OUTPUT = PROJECT_ROOT / "encode_external_validation"
-SOURCE = Path(
-    r"data\external\encode\MEASUREMENT.csv"
-)
+SOURCE = PROJECT_ROOT / "data" / "external" / "encode" / "MEASUREMENT.csv"
 
 
 def main():

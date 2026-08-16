@@ -1,3 +1,5 @@
+"""Run the bounded BOLD recalibration study for the two frozen OpenOx scores."""
+
 from __future__ import annotations
 
 import hashlib
@@ -19,7 +21,10 @@ from sklearn.model_selection import StratifiedKFold
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import SplineTransformer, StandardScaler
 
-ROOT = Path.cwd()
+from src.paths import PROJECT_ROOT
+
+
+ROOT = PROJECT_ROOT
 INPUT = ROOT / "bold_spo2_baseline_validation" / "bold_baseline_predictions.csv.gz"
 OUT = ROOT / "bold_recalibration_validation"
 SEED = 20260805
