@@ -51,11 +51,15 @@ def sha256(path: Path) -> str:
 
 
 def public_files() -> list[Path]:
+    files = (
+        path
+        for path in ROOT.rglob("*")
+        if path.is_file()
+        and not any(part in SKIP_DIRS for part in path.relative_to(ROOT).parts)
+    )
     return sorted(
-        path for path in ROOT.rglob("*")
-        if path.is_file() and not any(
-            part in SKIP_DIRS for part in path.relative_to(ROOT).parts
-        )
+        files,
+        key=lambda path: path.relative_to(ROOT).as_posix().casefold(),
     )
 
 

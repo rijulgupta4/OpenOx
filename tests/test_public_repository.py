@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import ast
+import csv
 import json
 import re
 import subprocess
@@ -75,3 +76,9 @@ def test_required_governance_files_are_present() -> None:
         "PUBLIC_RELEASE_MANIFEST.csv",
     }
     assert required.issubset({path.name for path in ROOT.iterdir() if path.is_file()})
+
+
+def test_manifest_order_is_platform_independent() -> None:
+    with (ROOT / "PUBLIC_RELEASE_MANIFEST.csv").open(encoding="utf-8", newline="") as stream:
+        paths = [row["path"] for row in csv.DictReader(stream)]
+    assert paths == sorted(paths, key=str.casefold)
