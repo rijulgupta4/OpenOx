@@ -1,6 +1,6 @@
 # OpenOx
 
-OpenOx is the code-only reproducibility repository for a completed study of pulse-oximeter accuracy, occult hypoxemia, pigmentation, perfusion, and cross-cohort transportability. V1 was formally closed on 2026-08-12 at decision D036.
+OpenOx is a completed, code-only investigation of when pulse oximetry can mislead—and whether a risk model survives contact with a new clinical cohort. It covers device accuracy, occult hypoxemia, measured skin pigmentation, perfusion, and cross-cohort transportability. V1 was formally closed on 2026-08-12 at decision D036.
 
 > **Final status:** Research-complete; not clinically validated; eligible for independent external evaluation; closed to further retrospective tuning.
 
@@ -10,7 +10,19 @@ The enriched D028 model showed useful participant-grouped internal performance, 
 
 No model in this repository is authorized for clinical use. A third untouched cohort is required before making a transportability claim about the BOLD-updated score.
 
-Start with the [final status](docs/FINAL_STATUS.md) for the evidence hierarchy and claim boundaries. Use the [repository guide](docs/REPOSITORY_GUIDE.md) for the notebook chronology and code map, and the [project hub](docs/PROJECT_HUB.md) for the full decision record.
+Start with the [results at a glance](docs/RESULTS.md), then use the [final status](docs/FINAL_STATUS.md) for the evidence hierarchy and claim boundaries. The [workflow map](docs/WORKFLOW_MAP.md) connects questions to notebooks and scripts, the [glossary](docs/GLOSSARY.md) defines study terminology, and the [project hub](docs/PROJECT_HUB.md) preserves the full decision record.
+
+## Study at a glance
+
+| Question | Evidence | Final interpretation |
+|---|---|---|
+| Did the richer compact model work internally? | Participant-grouped OpenOx validation | It improved ranking and probability loss over SpO2 alone, with calibration caution. |
+| Did it transfer unchanged? | Prespecified raw transfer to BOLD | No. It substantially overpredicted risk and discriminated poorly. |
+| Was a simpler score more portable? | Frozen OpenOx SpO2-only score applied to BOLD | Yes, comparatively, but it remained imperfect and exploratory. |
+| Did recalibration solve transportability? | BOLD outcome-informed recalibration | It improved BOLD probability performance, but it is model updating—not independent validation. |
+| Did ENCoDE validate the risk model? | ENCoDE feasibility and pigmentation replication | No risk validation was possible because the eligible denominator had zero events; pigmentation evidence was partial and inconclusive. |
+
+See [RESULTS.md](docs/RESULTS.md) for aggregate metrics and limitations. These summaries reproduce values already documented in the frozen decision record; no restricted rows or newly derived results are included.
 
 ## Public-release boundary
 
@@ -37,7 +49,7 @@ The analyses require separately authorized access to OpenOximetry v1.1.1, BOLD v
 1. Complete the applicable PhysioNet requirements in [DATA_USE.md](DATA_USE.md).
 2. Create the environment and local configuration described in the [reproducibility guide](docs/REPRODUCIBILITY.md).
 3. Launch Jupyter from the repository root and run notebooks in chronological order from `notebooks/`.
-4. Use `python -m scripts.build.<builder_name>` to reconstruct a notebook or `python -m scripts.qa.<check_name>` for an available independent check.
+4. Use `python -m scripts.build.<builder_name>` to reconstruct a notebook or `python -m scripts.qa.<check_name>` for an available separate scripted check.
 
 Generated `data/`, `outputs/`, validation directories, and model files must remain local and uncommitted.
 
