@@ -12,6 +12,12 @@ conda activate openox
 Copy-Item .env.example .env
 ```
 
+On macOS or Linux, replace the final command with:
+
+```bash
+cp .env.example .env
+```
+
 Keep the deterministic thread settings from `environment.yml`. Edit `.env` only with local authorized paths; never commit it.
 
 ## 3. Place data locally
@@ -40,7 +46,7 @@ The notebooks are output-cleared public records. To reconstruct a notebook sourc
 python -m scripts.build.build_20_bold_external_validation
 ```
 
-Selected late-stage workflows have independent checks under `scripts/qa/`, also run as modules. Substantive external-cohort runners are under `scripts/analysis/` and should likewise be invoked with `python -m scripts.analysis.<runner_name>`. Do not run a later stage until its frozen local inputs exist and any embedded hash checks pass.
+Selected late-stage workflows have separate scripted checks under `scripts/qa/`, also run as modules. These are second-code-path consistency checks, not external peer review. Substantive external-cohort runners are under `scripts/analysis/` and should likewise be invoked with `python -m scripts.analysis.<runner_name>`. Do not run a later stage until its frozen local inputs exist and any embedded hash checks pass.
 
 The repository intentionally does not promise a one-command public rerun: distributing the required source data, processed cohorts, row-level predictions, or fitted objects would violate the public-release boundary. Reproducibility means an independently authorized user can inspect the full code path and rebuild locally under the same frozen rules.
 

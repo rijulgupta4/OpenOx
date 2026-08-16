@@ -27,7 +27,7 @@ Predictive modeling is secondary. V2 waveform feasibility work was formally clos
 | Analytic core | Complete | Device performance, occult hypoxemia, pigmentation/non-disparate performance, and perfusion/physiologic context are complete. |
 | Secondary predictive modeling | Complete | The compact model is frozen and serialized for unchanged external evaluation; all enriched OpenOx-only models were rejected. |
 | External transportability and validation | Complete | BOLD failed unchanged D028 probability transport; a locked post-validation SpO2-only diagnostic transported materially better but remained imperfect. ENCoDE provided a partial high-saturation pigmentation replication but failed the low-saturation, exact-ITA-coverage, and occult-event gates. |
-| Outputs and manuscript | Complete | D036 closeout package, final report, figures, tables, model card, reporting checklists, reproducibility, and audit records. |
+| Outputs and manuscript | Complete (authorized workspace) | D036 closeout and local reporting package. Restricted-data-derived reports, figures, tables, and model artifacts are intentionally excluded from the public repository. |
 | V2 waveform extension | Closed | Synchronization could not be validated; no waveform model was developed and the evidence remains outside V1. |
 
 ## Data snapshot
@@ -846,13 +846,13 @@ The compact-model feature mapping passes: age and sex are complete, and left-sid
 
 **Decision:** Do not claim that the D028 compact model externally validates as an unchanged ICU probability model. Preserve BOLD raw-transfer results as the external finding and prohibit outcome-informed feature or coefficient revision from being relabeled validation. Any later recalibration is explicit model updating.
 
-**Evidence:** Across 11,880 eligible readings, observed risk was 5.65% and mean predicted risk was 21.10%; calibration intercept was -2.114 and slope 0.119. PR-AUC was 0.0735 and ROC-AUC 0.5680. The locked 5% threshold yielded 71.4% sensitivity, 32.8% specificity, 6.0% PPV, and 95.0% NPV. All 1,000 participant-cluster bootstrap replicates completed, participant-balanced estimates were materially unchanged, and independent QA reproduced headline metrics and artifact hashes.
+**Evidence:** Across 11,880 eligible readings, observed risk was 5.65% and mean predicted risk was 21.10%; calibration intercept was -2.114 and slope 0.119. PR-AUC was 0.0735 and ROC-AUC 0.5680. The locked 5% threshold yielded 71.4% sensitivity, 32.8% specificity, 6.0% PPV, and 95.0% NPV. All 1,000 participant-cluster bootstrap replicates completed, participant-balanced estimates were materially unchanged, and a separate scripted QA path reproduced headline metrics and artifact hashes.
 
 **Utility and heterogeneity:** The model did not robustly outperform the appropriate default strategy across 2%-10%. eICU dominated event support; MIMIC-III and MIMIC-IV did not support full standalone validation. Race/ethnicity results remain audit-only and cannot be translated into pigmentation claims.
 
 **Status:** Accepted. BOLD raw-transfer validation is complete and unsuccessful for unchanged probability use.
 
-### D032 â€” Freeze the ENCoDE source and pigmentation crosswalk
+### D032 — Freeze the ENCoDE source and pigmentation crosswalk
 
 **Decision:** Use the hash-verified ENCoDE v1.0.0 OMOP release. Pair concept 4196147 SpO2 backward to concept 3016502 SaO2 within five minutes; retain both values from 70% to 100%; and map only left-sided heart rate and respiratory rate within four hours. Use median forehead MST for the locked MST groups. Map known left/right finger placements to ipsilateral dorsal-finger Delfin ITA and forehead placements to forehead ITA. Do not substitute toe or unknown locations in the primary emitter-site-ITA analysis.
 
@@ -860,7 +860,7 @@ The compact-model feature mapping passes: age and sex are complete, and left-sid
 
 **Status:** Accepted. The crosswalk is frozen for ENCoDE target-event and pigmentation-effect estimation.
 
-### D033 â€” Record partial ENCoDE pigmentation replication and failed risk gate
+### D033 — Record partial ENCoDE pigmentation replication and failed risk gate
 
 **Decision:** Report the supported high-saturation forehead-MST result and objective-pigmentation sensitivities as a partial mechanistic replication. Do not claim complete dual-interval non-disparate performance, a supported primary emitter-site-ITA conclusion, or unchanged D028 risk-model validation.
 
@@ -914,9 +914,9 @@ The compact-model feature mapping passes: age and sex are complete, and left-sid
 - `17_prediction_enrichment_blocks.ipynb` — separate device, measured-pigmentation, and perfusion/context ridge blocks under frozen nested validation; corrected participant-balanced metrics; fold-contained PI scaling; cluster-bootstrap promotion gates; and QA.
 - `18_prediction_context_ablation_utility.ipynb` — four prespecified drop-one context ablations, 2%-10% pair- and participant-balanced decision curves, 2,000 participant-cluster bootstrap samples, component evidence, freeze/reject gate, figure, hashes, and QA.
 - `19_prediction_final_compact_lock.ipynb` — D028 final penalty derivation, one full-development compact refit, pipeline serialization, portable scoring contract, coefficients, hashes, exact reload check, and QA.
-- `20_bold_external_validation.ipynb` — D030 pre-outcome crosswalk freeze, unchanged D028 scoring, overall/source/race support gates, participant-balanced sensitivity, 1,000 participant-cluster bootstrap intervals, decision curves, and independent QA.
-- `21_encode_external_validation.ipynb` — D032 ENCoDE hash and crosswalk lock, released-pair reconstruction, support-gated high-saturation MST and ITA replication, participant-balanced sensitivity, conditional risk gate, figure, manifest, and independent QA.
-- `22_bold_spo2_baseline_validation.ipynb` — D034 post-validation SpO2-only OpenOx fit lock, unchanged BOLD scoring, paired baseline-versus-D028 participant bootstrap, calibration-by-SpO2 table, chronology audit, artifact hashes, and independent QA.
+- `20_bold_external_validation.ipynb` — D030 pre-outcome crosswalk freeze, unchanged D028 scoring, overall/source/race support gates, participant-balanced sensitivity, 1,000 participant-cluster bootstrap intervals, decision curves, and separate scripted QA.
+- `21_encode_external_validation.ipynb` — D032 ENCoDE hash and crosswalk lock, released-pair reconstruction, support-gated high-saturation MST and ITA replication, participant-balanced sensitivity, conditional risk gate, figure, manifest, and separate scripted QA.
+- `22_bold_spo2_baseline_validation.ipynb` — D034 post-validation SpO2-only OpenOx fit lock, unchanged BOLD scoring, paired baseline-versus-D028 participant bootstrap, calibration-by-SpO2 table, chronology audit, artifact hashes, and separate scripted QA.
 
 ### BOLD external-validation outputs
 
@@ -1233,8 +1233,8 @@ The BOLD-fitted recalibrator is model updating, not independent external validat
 | 2026-07-28 | Completed separate device, pigmentation, and perfusion/context enrichment evaluation; repaired participant-balanced threshold metrics and fold-contained PI scaling; accepted D026; advanced only the context block to ablation and decision-curve analysis. |
 | 2026-07-28 | Completed four context-component ablations and 2%-10% decision curves with 2,000 participant-cluster bootstrap samples; accepted D027; rejected the full OpenOx-only context model because participant-level loss improvement was not bootstrap-supported, despite favorable net benefit; retained actual PI as a supported mechanistic signal and the compact model as the external candidate. |
 | 2026-07-28 | Accepted D028-D029; selected `C=0.1` from aggregate loss across the 250 frozen tuning contexts; fit and serialized one full-development compact pipeline; independently reproduced its scores; locked the BOLD/ENCoDE subgroup claim boundary, D027 chronology, and perfusion-convergence interpretation; completed Phase 5. |
-| 2026-08-03 | Accepted D030-D031; hash-verified and froze the BOLD crosswalk before outcome analysis; applied the D028 model unchanged to 11,880 eligible BOLD pairs; completed 1,000 participant-cluster bootstrap samples, source and race/ethnicity audits, decision analysis, and independent QA; recorded failed raw-transfer calibration and weak discrimination without model revision. |
+| 2026-08-03 | Accepted D030-D031; hash-verified and froze the BOLD crosswalk before outcome analysis; applied the D028 model unchanged to 11,880 eligible BOLD pairs; completed 1,000 participant-cluster bootstrap samples, source and race/ethnicity audits, decision analysis, and separate scripted QA; recorded failed raw-transfer calibration and weak discrimination without model revision. |
 | 2026-08-04 | Accepted D032-D033; hash-verified and froze the ENCoDE crosswalk; reconstructed 615 protocol-conforming pairs; completed support-gated high-saturation forehead-MST and objective-ITA analyses with participant-cluster covariance and participant-balanced sensitivity; recorded the 615-versus-521 release discrepancy, three-pair low interval, 69.4% exact-ITA coverage, and zero-event risk gate; did not score D028. |
-| 2026-08-04 | Accepted D034 as post-validation diagnostic evidence; derived and locked the pre-existing SpO2-only OpenOx baseline from frozen tuning contexts, applied it unchanged to the identical BOLD denominator, completed paired 1,000-participant bootstrap and 18-check independent QA, and found materially better but still imperfect transport without model promotion. |
-| 2026-08-05 | Accepted D035 as post-validation model updating; compared four fixed recalibrators for both frozen BOLD scores with 20x5 patient-level cross-validation; selected logistic recalibration of SpO2-only, completed 1,000-replicate paired participant-bootstrap uncertainty and 15-check independent QA, and froze the result as a research bridge requiring a third untouched cohort. |
+| 2026-08-04 | Accepted D034 as post-validation diagnostic evidence; derived and locked the pre-existing SpO2-only OpenOx baseline from frozen tuning contexts, applied it unchanged to the identical BOLD denominator, completed paired 1,000-participant bootstrap and an 18-check separate QA path, and found materially better but still imperfect transport without model promotion. |
+| 2026-08-05 | Accepted D035 as post-validation model updating; compared four fixed recalibrators for both frozen BOLD scores with 20x5 patient-level cross-validation; selected logistic recalibration of SpO2-only, completed 1,000-replicate paired participant-bootstrap uncertainty and a 15-check separate QA path, and froze the result as a research bridge requiring a third untouched cohort. |
 | 2026-08-12 | Accepted D036; formally closed V1 as research-complete, preserved the negative external result, completed reporting/reproducibility/audit artifacts, and prohibited further retrospective tuning. V2 remains separately closed. |

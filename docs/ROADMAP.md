@@ -30,7 +30,7 @@ OpenOx evaluates when pulse oximetry overestimates or underestimates arterial ox
 | 4. Analytic core | Complete | Device, occult-hypoxemia, pigmentation, and perfusion/context analyses |
 | 5. Secondary predictive modeling | Complete | D028 compact ridge frozen; OpenOx-only enrichment models rejected |
 | 6. External transportability and validation | Complete | BOLD failed unchanged D028 probability transport; a post-validation SpO2-only diagnostic transported materially better but remained imperfect; ENCoDE provided partial high-saturation pigmentation replication and a zero-event risk gate |
-| 7. Outputs and manuscript | Complete | D036 closeout, TRIPOD+AI/PROBAST+AI package, final figures/tables, model card, reproducibility and audit records |
+| 7. Outputs and manuscript | Complete (authorized workspace) | D036 closeout and local reporting package; restricted-data-derived figures, tables, model artifacts, and rendered reports are excluded from this public repository |
 | V2. Waveform extension | Closed | Feasibility evidence preserved privately; synchronization was not validated and no waveform model was developed |
 
 ## Frozen analytic foundation
@@ -142,6 +142,8 @@ ENCoDE yielded only three pairs at SaO2 70-85%, so the lower-interval pigmentati
 | Device/perfusion enriched-model validation | Internal only | Not supported | Not supported unless exact fields are documented |
 
 ## Phase 7 - Outputs and manuscript
+
+This phase was completed within the authorized research workspace. The public repository preserves source code, output-cleared notebooks, aggregate decision documentation, and audit metadata. It does not publish the restricted-data-derived reporting package, figures, tables, fitted artifacts, or rendered reports. References below describe the reporting standard used for closeout, not a claim that every completed artifact is present publicly.
 
 - Report model development and evaluation using TRIPOD+AI.
 - Use PROBAST+AI as a structured risk-of-bias and applicability self-audit.

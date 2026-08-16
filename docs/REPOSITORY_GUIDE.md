@@ -5,11 +5,14 @@ OpenOx is a frozen chronological research record organized so an outside reader 
 ## Reading order
 
 1. [`README.md`](../README.md) - final conclusion and public-release boundary.
-2. [`FINAL_STATUS.md`](FINAL_STATUS.md) - evidence hierarchy and prohibited interpretations.
-3. [`DATA_USE.md`](../DATA_USE.md) - access and confidentiality requirements before touching data.
-4. [`ROADMAP.md`](ROADMAP.md) - frozen prespecification and project phases.
-5. [`PROJECT_HUB.md`](PROJECT_HUB.md) - detailed decisions D001-D036.
-6. [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) - environment, execution, and release checks.
+2. [`RESULTS.md`](RESULTS.md) - concise aggregate findings and limitations.
+3. [`GLOSSARY.md`](GLOSSARY.md) - clinical and modeling terminology.
+4. [`WORKFLOW_MAP.md`](WORKFLOW_MAP.md) - questions, evidence stages, notebooks, and code paths.
+5. [`FINAL_STATUS.md`](FINAL_STATUS.md) - evidence hierarchy and prohibited interpretations.
+6. [`DATA_USE.md`](../DATA_USE.md) - access and confidentiality requirements before touching data.
+7. [`ROADMAP.md`](ROADMAP.md) - frozen prespecification and project phases.
+8. [`PROJECT_HUB.md`](PROJECT_HUB.md) - detailed decisions D001-D036.
+9. [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) - environment, execution, and release checks.
 
 ## Analysis chronology
 
@@ -29,7 +32,7 @@ Notebook 17 was generated during development but is not part of the reviewed pub
 
 - `scripts/build/` contains notebook constructors. From the repository root, run one as a module, for example: `python -m scripts.build.build_20_bold_external_validation`.
 - `scripts/analysis/` contains calculations called by selected notebooks, including the BOLD and ENCoDE workflows.
-- `scripts/qa/` contains independent checks for selected late-stage analyses. Run them as modules so package imports resolve consistently.
+- `scripts/qa/` contains separate scripted checks for selected late-stage analyses. They reproduce calculations through a second code path, but are not independent review by an external team. Run them as modules so package imports resolve consistently.
 - `src/config.py` validates local OpenOximetry paths and defines output directories.
 - `src/paths.py` is the canonical map of public repository directories.
 - `scripts/release_check.py` scans the public tree, enforces the folder boundary, clears confidentiality gates, and validates the release manifest.

@@ -7,7 +7,7 @@ Describe the reproducibility, documentation, compatibility, or verified-defect c
 - [ ] I used only data I am independently authorized to access.
 - [ ] No source data, row-level derivatives, identifiers, copied timestamps, model objects, notebook outputs, images, or rendered restricted-data artifacts are included.
 - [ ] Notebooks contain no outputs, execution counts, or attachments.
-- [ ] `python release_check.py` passes.
+- [ ] `python scripts/release_check.py` passes.
 - [ ] I reviewed the complete staged diff.
 
 ## Scientific boundary
