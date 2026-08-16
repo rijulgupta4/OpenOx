@@ -10,6 +10,9 @@
 | **Occult hypoxemia** | The locked outcome `SaO2 < 88%` while the displayed `SpO2` is 92–96%. |
 | **ABG** | Arterial blood gas, an invasive blood test used here as the oxygen-saturation reference. |
 | **Perfusion index** | A device-derived measure related to pulsatile signal strength and peripheral perfusion. |
+| **Investigational waveform recorder** | A separate research device that collected raw red and infrared pulse signals. It was not one of the commercial pulse oximeters whose accuracy was evaluated. |
+| **Signal-quality indicator (SQI)** | A device-generated measure of how reliable its signal may be. The separate raw waveforms in this project were not the commercial devices' internal signal-quality indicators. |
+| **Synchronized timing** | Timing information that makes it possible to determine which recordings and measurements occurred together. The available files did not provide this consistently across the waveform and oxygen-measurement systems. |
 | **MST** | Monk Skin Tone scale, used as a directly measured/assigned pigmentation measure in the relevant cohorts. |
 | **ITA** | Individual Typology Angle, a colorimetry-derived pigmentation measure. Measurements depend on instrument and anatomical site. |
 

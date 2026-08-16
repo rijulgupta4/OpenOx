@@ -21,6 +21,7 @@ DENIED_SUFFIXES = {
     ".zip",
 }
 ALLOWED_CSV = {"PUBLIC_RELEASE_MANIFEST.csv"}
+ALLOWED_POST_D035_DOCS = {"docs/WAVEFORM_STUDY.md"}
 MANIFEST = ROOT / "PUBLIC_RELEASE_MANIFEST.csv"
 SKIP_DIRS = {
     ".git", ".hypothesis", ".ipynb_checkpoints", ".mypy_cache", ".nox",
@@ -48,6 +49,13 @@ def canonical_bytes(path: Path) -> bytes:
 
 def sha256(path: Path) -> str:
     return hashlib.sha256(canonical_bytes(path)).hexdigest()
+
+
+def is_unreviewed_post_d035_file(rel: str, filename: str) -> bool:
+    """Allow the reviewed explanation without opening the waveform artifact gate."""
+    return bool(re.search(r"(^|_)(24|v2)(_|\.|$)|waveform", filename.lower())) and (
+        rel not in ALLOWED_POST_D035_DOCS
+    )
 
 
 def public_files() -> list[Path]:
@@ -131,7 +139,7 @@ def main() -> None:
             problems.append(f"denied artifact type: {rel}")
         if path.suffix.lower() == ".csv" and path.name not in ALLOWED_CSV:
             problems.append(f"unreviewed CSV: {rel}")
-        if re.search(r"(^|_)(24|v2)(_|\.|$)|waveform", lower):
+        if is_unreviewed_post_d035_file(rel, lower):
             problems.append(f"post-D035/V2 file: {rel}")
 
         if path.name != "release_check.py" and path.stat().st_size <= 5_000_000:

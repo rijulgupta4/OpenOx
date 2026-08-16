@@ -12,7 +12,8 @@ OpenOx is a frozen chronological research record organized so an outside reader 
 6. [`DATA_USE.md`](../DATA_USE.md) - access and confidentiality requirements before touching data.
 7. [`ROADMAP.md`](ROADMAP.md) - frozen prespecification and project phases.
 8. [`PROJECT_HUB.md`](PROJECT_HUB.md) - detailed decisions D001-D036.
-9. [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) - environment, execution, and release checks.
+9. [`WAVEFORM_STUDY.md`](WAVEFORM_STUDY.md) - a separate stopped study explaining why the raw pulse recordings could not be matched reliably to enough oxygen measurements.
+10. [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) - environment, execution, and release checks.
 
 ## Analysis chronology
 
@@ -27,6 +28,8 @@ All reviewed notebooks are flat within `notebooks/`; their numeric prefixes are 
 | External evidence | `20`-`23` | BOLD raw transfer, ENCoDE partial replication, SpO2-only diagnostic, bounded BOLD updating |
 
 Notebook 17 was generated during development but is not part of the reviewed public notebook set. Its aggregate decision record remains in the project hub; restricted outputs remain private.
+
+The public notebook sequence covers the completed V1 study. The later waveform timing work is summarized separately and is not presented as another stage of the V1 modeling pipeline.
 
 ## How code maps to notebooks
 

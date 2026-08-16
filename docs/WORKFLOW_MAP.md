@@ -16,6 +16,15 @@ flowchart LR
     I --> J
 ```
 
+The later waveform study is separate from that evidence chain:
+
+```mermaid
+flowchart LR
+    W["Separate waveform study"] --> X["Can waveform timing be matched to oxygen measurements?"]
+    X --> Y["Not reliably for enough records"]
+    Y --> Z["Stopped before waveform-based error modeling"]
+```
+
 ## Find the right entry point
 
 | If you want to… | Read first | Notebook stage | Supporting code |
@@ -30,6 +39,7 @@ flowchart LR
 | Audit unchanged external transfer | Decisions D030–D031 | `20` | `scripts/analysis/bold_external_validation.py` |
 | Audit the simpler BOLD diagnostic | Decision D034 | `22` | `scripts/analysis/bold_spo2_baseline_validation.py` |
 | Audit model updating | Decision D035 | `23` | `scripts/analysis/bold_recalibration_validation.py` |
+| Understand why the waveform study stopped | [`WAVEFORM_STUDY.md`](WAVEFORM_STUDY.md) | Not part of the public V1 notebook sequence | No public waveform analysis code |
 | Rebuild notebook source | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) | Any public notebook | `python -m scripts.build.<builder_name>` |
 | Check public-release safety | [`DATA_USE.md`](../DATA_USE.md) | Not applicable | `python scripts/release_check.py` |
 

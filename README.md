@@ -24,6 +24,14 @@ Start with the [results at a glance](docs/RESULTS.md), then use the [final statu
 
 See [RESULTS.md](docs/RESULTS.md) for aggregate metrics and limitations. These summaries reproduce values already documented in the frozen decision record; no restricted rows or newly derived results are included.
 
+## A waveform study that stopped at the timing stage
+
+A separate [waveform study](docs/WAVEFORM_STUDY.md) explored whether raw pulse signals could help explain errors in commercial pulse-oximeter readings.
+
+The waveforms came from a separate investigational recorder. The available timing information was not sufficient to match enough waveform sections reliably to individual SpO2 and reference SaO2 measurements. Because an incorrect match could produce misleading results, the study stopped before waveform characteristics were tested against measurement errors.
+
+This does not show that waveform methods are ineffective. It shows that the available records could not support this particular analysis reliably.
+
 ## Public-release boundary
 
 This repository contains reviewed source code, output-cleared notebooks, configuration templates, and aggregate decision documentation. It intentionally excludes:

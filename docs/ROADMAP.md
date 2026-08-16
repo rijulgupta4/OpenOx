@@ -2,7 +2,7 @@
 
 ## Pulse-oximeter reliability across device, pigmentation, and physiologic context
 
-**Updated:** 2026-08-12
+**Updated:** 2026-08-16
 **Current phase:** V1 formally closed at D036; research-complete and frozen
 
 ## Project purpose
@@ -17,7 +17,7 @@ OpenOx evaluates when pulse oximetry overestimates or underestimates arterial ox
 - Controlled-desaturation event frequencies are laboratory phenotypes, not clinical prevalence estimates.
 - Device codes remain opaque unless an authoritative crosswalk is obtained.
 - Regulatory comparisons are methodological benchmarks, not regulatory validation.
-- V2 waveform feasibility work was formally closed on 2026-08-11 because synchronization could not be validated; it is not an active extension.
+- A separate waveform study was closed on 2026-08-11 after the timing review. The available information was not sufficient to match enough raw waveform sections reliably to individual SpO2 and reference SaO2 measurements. No waveform-based error model was developed. See [`WAVEFORM_STUDY.md`](WAVEFORM_STUDY.md).
 
 ## Progress overview
 
@@ -31,7 +31,7 @@ OpenOx evaluates when pulse oximetry overestimates or underestimates arterial ox
 | 5. Secondary predictive modeling | Complete | D028 compact ridge frozen; OpenOx-only enrichment models rejected |
 | 6. External transportability and validation | Complete | BOLD failed unchanged D028 probability transport; a post-validation SpO2-only diagnostic transported materially better but remained imperfect; ENCoDE provided partial high-saturation pigmentation replication and a zero-event risk gate |
 | 7. Outputs and manuscript | Complete (authorized workspace) | D036 closeout and local reporting package; restricted-data-derived figures, tables, model artifacts, and rendered reports are excluded from this public repository |
-| V2. Waveform extension | Closed | Feasibility evidence preserved privately; synchronization was not validated and no waveform model was developed |
+| Waveform timing study | Closed | Some records appeared to line up, but the timing could not be matched reliably for enough records to support an analysis. The study stopped before waveform characteristics were tested against oxygen-measurement errors. |
 
 ## Frozen analytic foundation
 
@@ -115,7 +115,7 @@ BOLD is the workhorse quantitative external-validation cohort. The hash-verified
 
 After that failure was known, one post-validation diagnostic applied the pre-existing OpenOx SpO2-only baseline to the identical BOLD denominator. Its full-development `C=1.0` specification was selected solely from the frozen OpenOx tuning record and locked before BOLD outcome access within the run. It predicted 4.38% versus 5.65% observed, with calibration intercept +0.281, slope 0.611, Brier 0.05226, log loss 0.21301, PR-AUC 0.0998, and ROC-AUC 0.6608. Paired participant-bootstrap differences versus D028 favored the baseline for probability loss and ranking. This supports degradation from the combined added compact predictor block, but the baseline remains imperfect, exploratory, and not eligible for outcome-informed promotion.
 
-A bounded post-validation recalibration study then compared intercept-only, logistic intercept-plus-slope, isotonic, and fixed spline calibration for both frozen scores using 20 repeats of five-fold patient-level cross-validation. Logistic recalibration of SpO2-only was selected (median log loss 0.20762; Brier 0.05208). Flexible SpO2-only methods were essentially tied, and the best recalibrated D028 candidate remained worse (spline log loss 0.21474; Brier 0.05304). This is BOLD-informed model updating, not new external validation. It closes the V1 recalibration bridge; a third untouched cohort is required before promotion, while waveform work belongs to V2.
+A bounded post-validation recalibration study then compared intercept-only, logistic intercept-plus-slope, isotonic, and fixed spline calibration for both frozen scores using 20 repeats of five-fold patient-level cross-validation. Logistic recalibration of SpO2-only was selected (median log loss 0.20762; Brier 0.05208). Flexible SpO2-only methods were essentially tied, and the best recalibrated D028 candidate remained worse (spline log loss 0.21474; Brier 0.05304). This is BOLD-informed model updating, not new external validation. It closes the V1 recalibration bridge; a third untouched cohort is required before promotion. A future waveform study would require synchronized data collected or documented specifically for that purpose.
 
 ### ENCoDE role
 
@@ -156,7 +156,7 @@ This phase was completed within the authorized research workspace. The public re
 1. Do not refit, retune, reselect, or optimize thresholds on OpenOx or BOLD.
 2. Evaluate the BOLD-fit SpO2-only logistic recalibrator only in a third untouched cohort under a new prespecified protocol.
 3. Preserve the 615-versus-521 ENCoDE reconstruction discrepancy for author/data-curator clarification; do not select a post hoc 521-row subset.
-4. Keep V2 closed. No further synchronization, simulation, feature development, power analysis, or outcome exposure is authorized under this project.
+4. Keep the waveform study closed under the current project. Revisiting the question would require synchronized waveform, pulse-oximeter, and reference oxygen measurements collected under a new study plan.
 
 ## Key limitations
 
