@@ -1,3 +1,5 @@
+"""Run the support-gated ENCoDE replication against authorized local data."""
+
 from __future__ import annotations
 
 import csv
@@ -10,12 +12,10 @@ import numpy as np
 import pandas as pd
 from PIL import Image, ImageDraw, ImageFont
 
+from src.paths import PROJECT_ROOT
 
-PROJECT_ROOT = Path.cwd()
 OUTPUT_DIR = PROJECT_ROOT / "encode_external_validation"
-ENCODE_ROOT = Path(
-    r"data\external\encode"
-)
+ENCODE_ROOT = PROJECT_ROOT / "data" / "external" / "encode"
 
 MEASUREMENT = ENCODE_ROOT / "MEASUREMENT.csv"
 CONCEPT = ENCODE_ROOT / "CONCEPT.csv"

@@ -1,3 +1,5 @@
+"""Apply the frozen D028 model unchanged to the authorized local BOLD cohort."""
+
 from __future__ import annotations
 
 from datetime import datetime, timezone
@@ -9,10 +11,11 @@ import math
 import numpy as np
 import pandas as pd
 
+from src.paths import PROJECT_ROOT
 
-WORKSPACE = Path(r".")
-BOLD_ROOT = Path(r"data\external\bold")
-OPENOX_ROOT = Path(r".")
+WORKSPACE = PROJECT_ROOT
+BOLD_ROOT = PROJECT_ROOT / "data" / "external" / "bold"
+OPENOX_ROOT = PROJECT_ROOT
 BOLD_CSV = BOLD_ROOT / "bold_dataset.csv"
 BOLD_DICTIONARY = BOLD_ROOT / "bold_dictionary.pdf"
 SPEC_PATH = (

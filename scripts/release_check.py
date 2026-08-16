@@ -15,14 +15,17 @@ DENIED_SUFFIXES = {
     ".7z", ".arrow", ".bmp", ".csv.gz", ".dat", ".db", ".doc", ".docx",
     ".feather", ".gif", ".gz", ".h5", ".hdf5", ".hea", ".jpeg", ".joblib",
     ".jpg", ".jsonl", ".mp3", ".ndjson", ".npy", ".npz", ".parquet", ".pdf",
-    ".pickle", ".pkl", ".png", ".ppt", ".pptx", ".rds", ".sav", ".sqlite",
-    ".sqlite3", ".tar", ".tgz", ".tif", ".tiff", ".tsv", ".tsv.gz", ".wav",
-    ".xls", ".xlsx", ".zip",
+    ".ckpt", ".onnx", ".pickle", ".pkl", ".png", ".ppt", ".pptx", ".pt",
+    ".pth", ".rds", ".safetensors", ".sav", ".sqlite", ".sqlite3", ".tar",
+    ".tgz", ".tif", ".tiff", ".tsv", ".tsv.gz", ".wav", ".xls", ".xlsx",
+    ".zip",
 }
 ALLOWED_CSV = {"PUBLIC_RELEASE_MANIFEST.csv"}
 MANIFEST = ROOT / "PUBLIC_RELEASE_MANIFEST.csv"
 SKIP_DIRS = {
-    ".git", ".ipynb_checkpoints", ".mypy_cache", ".pytest_cache", ".ruff_cache", "__pycache__",
+    ".git", ".hypothesis", ".ipynb_checkpoints", ".mypy_cache", ".nox",
+    ".pytest_cache", ".ruff_cache", ".tox", ".venv", "__pycache__", "dist",
+    "htmlcov", "venv",
 }
 PERSONAL_PATH = re.compile(r"C:\\Users\\rijul|C:\\\\Users\\\\rijul", re.I)
 SECRET = re.compile(

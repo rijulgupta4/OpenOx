@@ -1,3 +1,5 @@
+"""Recompute selected final compact-model checks through a separate scripted path."""
+
 from pathlib import Path
 import hashlib
 import json
@@ -7,15 +9,13 @@ import nbformat
 import numpy as np
 import pandas as pd
 
+from src.paths import PROJECT_ROOT
 
-PROJECT = Path(r".")
+PROJECT = PROJECT_ROOT
 TABLES = PROJECT / "outputs" / "tables"
 MODELS = PROJECT / "outputs" / "models"
 PROCESSED = PROJECT / "data" / "processed"
-NOTEBOOK = Path(
-    r"."
-    r"\notebooks\19_prediction_final_compact_lock.ipynb"
-)
+NOTEBOOK = PROJECT / "notebooks" / "19_prediction_final_compact_lock.ipynb"
 
 COHORT = PROCESSED / "analytic_cohort_180s.csv.gz"
 CONTEXT = PROCESSED / "context_covariates_by_pair.csv.gz"

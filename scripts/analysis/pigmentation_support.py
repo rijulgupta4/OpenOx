@@ -1,9 +1,14 @@
+"""Summarize measured-pigmentation support in authorized local OpenOx data."""
+
 from pathlib import Path
 import numpy as np
 import pandas as pd
 
-R = Path(r"data\external\openoximetry")
-C = Path(r".\data\processed\analytic_cohort_180s.csv.gz")
+from src.paths import PROJECT_ROOT
+
+
+R = PROJECT_ROOT / "data" / "external" / "openoximetry"
+C = PROJECT_ROOT / "data" / "processed" / "analytic_cohort_180s.csv.gz"
 co = pd.read_csv(C, dtype={"patient_id": str, "encounter_id": str})
 en = pd.read_csv(R / "encounter.csv", dtype={"patient_id": str, "encounter_id": str})
 sp = pd.read_csv(R / "spectrophotometer.csv", dtype={"patient_id": str, "encounter_id": str})

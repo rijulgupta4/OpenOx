@@ -1,3 +1,5 @@
+"""Evaluate the frozen OpenOx SpO2-only score in the authorized local BOLD cohort."""
+
 from __future__ import annotations
 
 import hashlib
@@ -20,11 +22,12 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 
 from scripts.analysis.bold_external_validation import metric_bundle, sha256
+from src.paths import PROJECT_ROOT
 
 
-WORKSPACE = Path(r".")
-OPENOX_ROOT = Path(r".")
-BOLD_ROOT = Path(r"data\external\bold")
+WORKSPACE = PROJECT_ROOT
+OPENOX_ROOT = PROJECT_ROOT
+BOLD_ROOT = PROJECT_ROOT / "data" / "external" / "bold"
 OUTPUT_DIR = WORKSPACE / "bold_spo2_baseline_validation"
 COHORT_PATH = OPENOX_ROOT / "data" / "processed" / "analytic_cohort_180s.csv.gz"
 TUNING_PATH = OPENOX_ROOT / "outputs" / "tables" / "prediction_internal_tuning.csv"

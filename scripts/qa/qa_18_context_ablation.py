@@ -1,3 +1,5 @@
+"""Recompute selected context-ablation checks through a separate scripted path."""
+
 from pathlib import Path
 import hashlib
 import json
@@ -7,8 +9,9 @@ import numpy as np
 import pandas as pd
 from sklearn.metrics import brier_score_loss, log_loss
 
+from src.paths import PROJECT_ROOT
 
-PROJECT = Path(r".")
+PROJECT = PROJECT_ROOT
 TABLES = PROJECT / "outputs" / "tables"
 NOTEBOOK = PROJECT / "notebooks" / "18_prediction_context_ablation_utility.ipynb"
 PREDICTIONS = TABLES / "prediction_context_ablation_oof_predictions.csv.gz"
