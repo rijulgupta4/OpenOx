@@ -2,7 +2,7 @@
 
 Frozen project record for the completed OpenOx V1 pulse-oximetry analysis. Historical language is retained where it documents the chronology; D036 controls the final interpretation.
 
-**Last updated:** 2026-08-12
+**Last updated:** 2026-08-16
 **Current phase:** V1 formally closed at D036; research-complete and frozen
 **Environment:** Conda environment `openox`
 
@@ -15,7 +15,7 @@ Evaluate pulse-oximeter performance using paired SpO2 and arterial SaO2 measurem
 3. Pigmentation and non-disparate performance.
 4. Perfusion and physiologic context.
 
-Predictive modeling is secondary. V2 waveform feasibility work was formally closed on 2026-08-11 and is not an active extension.
+Predictive modeling is secondary. A separate waveform study was closed on 2026-08-11 because the available timing information could not reliably connect enough raw waveform sections to individual oxygen measurements. The study stopped before a waveform-based error model was developed.
 
 ## Roadmap status
 
@@ -28,7 +28,7 @@ Predictive modeling is secondary. V2 waveform feasibility work was formally clos
 | Secondary predictive modeling | Complete | The compact model is frozen and serialized for unchanged external evaluation; all enriched OpenOx-only models were rejected. |
 | External transportability and validation | Complete | BOLD failed unchanged D028 probability transport; a locked post-validation SpO2-only diagnostic transported materially better but remained imperfect. ENCoDE provided a partial high-saturation pigmentation replication but failed the low-saturation, exact-ITA-coverage, and occult-event gates. |
 | Outputs and manuscript | Complete (authorized workspace) | D036 closeout and local reporting package. Restricted-data-derived reports, figures, tables, and model artifacts are intentionally excluded from the public repository. |
-| V2 waveform extension | Closed | Synchronization could not be validated; no waveform model was developed and the evidence remains outside V1. |
+| Waveform timing study | Closed | Raw pulse signals from a separate investigational recorder were reviewed, but the timing could not be matched reliably for enough records to support an analysis. No waveform-based error model was developed. |
 
 ## Data snapshot
 
@@ -182,7 +182,7 @@ Device-reported PI is fully observed in five device/probe strata: four D011 core
 
 Within PI-reporting device/probe strata, perfusion effects will use `log2(PI)`, so a one-unit contrast represents a doubling of the device's native value. Any pooled sensitivity model must use within-device robust standardization and explicit device interaction terms. Warming is retained without primary imputation. Finger diameter is mapped only to the inferred instrumented finger and is undefined for ear and forehead placements.
 
-The prespecified physiologic adjustment set is pH, PaCO2, total hemoglobin, carboxyhemoglobin, and methemoglobin, with age and normalized assigned sex as baseline context. PaO2, end-tidal O2, calculated O2 saturation, and end-tidal CO2 are excluded from the primary adjustment set because they are redundant with or downstream of the locked SaO2/PaCO2 structure. Heart rate, respiratory rate, and P50 remain sensitivity variables; sparse mixed-source blood-pressure fields are reserved for the optional waveform extension.
+The prespecified physiologic adjustment set is pH, PaCO2, total hemoglobin, carboxyhemoglobin, and methemoglobin, with age and normalized assigned sex as baseline context. PaO2, end-tidal O2, calculated O2 saturation, and end-tidal CO2 are excluded from the primary adjustment set because they are redundant with or downstream of the locked SaO2/PaCO2 structure. Heart rate, respiratory rate, and P50 remain sensitivity variables; sparse mixed-source blood-pressure fields were reserved for a possible later waveform study.
 
 ### Primary device-performance results
 
@@ -531,6 +531,8 @@ The compact-model feature mapping passes: age and sex are complete, and left-sid
 **Decision:** Use waveform timestamps now only when necessary for pairing quality; reserve full PPG/waveform modeling for Version 2.
 
 **Reasoning:** Full waveform analysis materially expands scope. Timestamp markers are nevertheless necessary to investigate duplicate blood-gas keys.
+
+**Closeout clarification:** The lower-frequency reference markers used for V1 pairing and the raw pulse signals considered later came from different recording sources and served different purposes. The reference markers helped identify the closest blood-gas result. They did not establish which section of the separate raw pulse recording belonged with each commercial-device oxygen measurement.
 
 **Status:** Accepted.
 
@@ -1195,7 +1197,9 @@ V1 is research-complete and frozen. The final closeout independently reverified 
 
 The locked conclusion is: **Internal performance did not translate cleanly across cohorts. External recalibration improved the simpler SpO2-only model in BOLD, while richer predictor enrichment did not demonstrate reliable transportable benefit. Further independent validation is required before clinical use.**
 
-The BOLD-fitted recalibrator is model updating, not independent external validation. V1 may be reopened only for a verified implementation defect, a materially corrected source release, or a prespecified evaluation in a genuinely untouched cohort. V2 remains separately closed and outside the V1 execution path.
+The BOLD-fitted recalibrator is model updating, not independent external validation. V1 may be reopened only for a verified implementation defect, a materially corrected source release, or a prespecified evaluation in a genuinely untouched cohort.
+
+The separate waveform study also remains closed. Its timing review did not support moving forward to waveform-based error modeling. This result does not show that waveform methods are ineffective; a future attempt would require synchronized recordings and a new study plan. See [`WAVEFORM_STUDY.md`](WAVEFORM_STUDY.md) for a reader-facing explanation of what was tested, why the work stopped, and what would be needed to revisit the question.
 
 ## Post-closeout next steps
 
@@ -1237,4 +1241,5 @@ The BOLD-fitted recalibrator is model updating, not independent external validat
 | 2026-08-04 | Accepted D032-D033; hash-verified and froze the ENCoDE crosswalk; reconstructed 615 protocol-conforming pairs; completed support-gated high-saturation forehead-MST and objective-ITA analyses with participant-cluster covariance and participant-balanced sensitivity; recorded the 615-versus-521 release discrepancy, three-pair low interval, 69.4% exact-ITA coverage, and zero-event risk gate; did not score D028. |
 | 2026-08-04 | Accepted D034 as post-validation diagnostic evidence; derived and locked the pre-existing SpO2-only OpenOx baseline from frozen tuning contexts, applied it unchanged to the identical BOLD denominator, completed paired 1,000-participant bootstrap and an 18-check separate QA path, and found materially better but still imperfect transport without model promotion. |
 | 2026-08-05 | Accepted D035 as post-validation model updating; compared four fixed recalibrators for both frozen BOLD scores with 20x5 patient-level cross-validation; selected logistic recalibration of SpO2-only, completed 1,000-replicate paired participant-bootstrap uncertainty and a 15-check separate QA path, and froze the result as a research bridge requiring a third untouched cohort. |
-| 2026-08-12 | Accepted D036; formally closed V1 as research-complete, preserved the negative external result, completed reporting/reproducibility/audit artifacts, and prohibited further retrospective tuning. V2 remains separately closed. |
+| 2026-08-12 | Accepted D036; formally closed V1 as research-complete, preserved the negative external result, completed reporting/reproducibility/audit artifacts, and prohibited further retrospective tuning. The separate waveform study remains closed. |
+| 2026-08-16 | Added a public, aggregate-only explanation of the separate waveform timing study, why it stopped, what it did not show, and what a future study would need. No waveform files or participant-level timing results were added. |

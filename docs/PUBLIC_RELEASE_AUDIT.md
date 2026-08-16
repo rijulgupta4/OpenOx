@@ -8,7 +8,8 @@
 
 - Updated entry-point language from the D035 interim state to the D036 final closeout perspective.
 - Preserved the unfavorable BOLD raw-transfer result and labeled BOLD-fitted recalibration as model updating, not independent external validation.
-- Recorded V2 as closed and excluded; no waveform analysis is included or resumed.
+- Recorded the waveform study as closed; no waveform analysis is included or resumed.
+- Added a public explanation containing narrative context and aggregate timing-review findings only. It includes no waveform files, headers, filenames, timestamps, participant-level matches, restricted-data figures or tables, or derived patient-level material.
 - Removed notebook outputs/execution counts from release copies and reject embedded notebook attachments.
 - Excluded source/processed data, row-level predictions, copied timestamps, model objects, figures, PDFs, office documents, archives, and validation output directories.
 - Replaced personal paths with repository-relative paths.

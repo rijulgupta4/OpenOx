@@ -10,6 +10,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+from scripts import release_check
+
 
 ROOT = Path(__file__).resolve().parents[1]
 LOCAL_LINK = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
@@ -82,3 +84,13 @@ def test_manifest_order_is_platform_independent() -> None:
     with (ROOT / "PUBLIC_RELEASE_MANIFEST.csv").open(encoding="utf-8", newline="") as stream:
         paths = [row["path"] for row in csv.DictReader(stream)]
     assert paths == sorted(paths, key=str.casefold)
+
+
+def test_waveform_document_allowlist_is_narrow() -> None:
+    assert (ROOT / "docs" / "WAVEFORM_STUDY.md").is_file()
+    assert not release_check.is_unreviewed_post_d035_file(
+        "docs/WAVEFORM_STUDY.md", "WAVEFORM_STUDY.md"
+    )
+    assert release_check.is_unreviewed_post_d035_file(
+        "docs/waveform_record_notes.md", "waveform_record_notes.md"
+    )
