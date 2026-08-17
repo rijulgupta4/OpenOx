@@ -68,6 +68,7 @@ encode_external_validation/
 *.tif
 *.tiff
 *.bmp
+*.svg
 *.pdf
 *.doc
 *.docx
@@ -78,6 +79,9 @@ encode_external_validation/
 
 # Keep only the reviewed public manifest CSV
 !PUBLIC_RELEASE_MANIFEST.csv
+!docs/figures/
+!docs/figures/model-transport.svg
+!docs/figures/timing-study-flow.svg
 
 # Python, notebooks, environments, and editors
 __pycache__/

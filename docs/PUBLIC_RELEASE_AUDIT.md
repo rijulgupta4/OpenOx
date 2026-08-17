@@ -1,4 +1,4 @@
-# Public release audit through D036
+# Public release audit through D036 and V1.0.0 preparation
 
 ## Assessment
 
@@ -9,13 +9,15 @@
 - Updated entry-point language from the D035 interim state to the D036 final closeout perspective.
 - Preserved the unfavorable BOLD raw-transfer result and labeled BOLD-fitted recalibration as model updating, not independent external validation.
 - Recorded the waveform study as closed; no waveform analysis is included or resumed.
-- Added a public explanation containing narrative context and aggregate timing-review findings only. It includes no waveform files, headers, filenames, timestamps, participant-level matches, restricted-data figures or tables, or derived patient-level material.
+- Added a public explanation containing narrative context, aggregate timing-review findings, and the frozen matching thresholds only. It includes no waveform files, headers, filenames, timestamps, participant-level matches, restricted-data figures or tables, or derived patient-level material.
 - Removed notebook outputs/execution counts from release copies and reject embedded notebook attachments.
-- Excluded source/processed data, row-level predictions, copied timestamps, model objects, figures, PDFs, office documents, archives, and validation output directories.
+- Excluded source/processed data, row-level predictions, copied timestamps, model objects, restricted-data figures, PDFs, office documents, archives, and validation output directories.
+- Allowlisted two hand-authored SVGs containing aggregate public values only. The release check rejects any other SVG and rejects embedded or externally linked SVG content.
 - Replaced personal paths with repository-relative paths.
 - Added deny-by-default patterns for common clinical-data, array, database, archive, media, and model formats.
 - Added dataset-specific PhysioNet access classes, version citations, confidentiality instructions, and license separation.
 - Added an outside-user repository guide, reproducibility guide, contribution policy, security policy, citation metadata, and license-scope notice.
+- Preserved exact stage-specific software versions where the frozen execution record contained them; unrecorded versions were not guessed.
 
 ## License assessment
 

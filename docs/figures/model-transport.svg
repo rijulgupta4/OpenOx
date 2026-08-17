@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="520" viewBox="0 0 960 520" role="img" aria-labelledby="title desc">
+  <title id="title">Observed hidden-low-oxygen rate and unchanged model predictions in BOLD</title>
+  <desc id="desc">The observed event rate was 5.65 percent. The compact model predicted 21.10 percent and the simpler SpO2-only score predicted 4.38 percent.</desc>
+  <rect width="960" height="520" fill="#ffffff"/>
+  <text x="60" y="54" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#17212b">Unchanged model transport to BOLD</text>
+  <text x="60" y="82" font-family="Arial, sans-serif" font-size="16" fill="#4b5563">Predicted hidden-low-oxygen rate compared with the 5.65% observed rate</text>
+
+  <line x1="300" y1="118" x2="300" y2="405" stroke="#9ca3af" stroke-width="1"/>
+  <line x1="300" y1="405" x2="900" y2="405" stroke="#9ca3af" stroke-width="1"/>
+  <g font-family="Arial, sans-serif" font-size="14" fill="#4b5563" text-anchor="middle">
+    <text x="300" y="432">0%</text>
+    <text x="420" y="432">5%</text>
+    <text x="540" y="432">10%</text>
+    <text x="660" y="432">15%</text>
+    <text x="780" y="432">20%</text>
+    <text x="900" y="432">25%</text>
+  </g>
+  <g stroke="#e5e7eb" stroke-width="1">
+    <line x1="420" y1="118" x2="420" y2="405"/>
+    <line x1="540" y1="118" x2="540" y2="405"/>
+    <line x1="660" y1="118" x2="660" y2="405"/>
+    <line x1="780" y1="118" x2="780" y2="405"/>
+    <line x1="900" y1="118" x2="900" y2="405"/>
+  </g>
+
+  <g font-family="Arial, sans-serif" font-size="17" fill="#17212b" text-anchor="end">
+    <text x="280" y="174">Observed BOLD rate</text>
+    <text x="280" y="264">Compact model</text>
+    <text x="280" y="354">SpO2-only score</text>
+  </g>
+
+  <rect x="300" y="143" width="135.6" height="44" rx="4" fill="#2f6f8f"/>
+  <rect x="300" y="233" width="506.4" height="44" rx="4" fill="#c46b2d"/>
+  <rect x="300" y="323" width="105.12" height="44" rx="4" fill="#5f8f5b"/>
+  <g font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#17212b">
+    <text x="447" y="171">5.65%</text>
+    <text x="818" y="261">21.10%</text>
+    <text x="417" y="351">4.38%</text>
+  </g>
+
+  <text x="60" y="475" font-family="Arial, sans-serif" font-size="14" fill="#4b5563">Same evaluation set: 11,880 pairs from 11,441 patients. Predictions were applied without refitting.</text>
+</svg>

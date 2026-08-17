@@ -1,0 +1,32 @@
+lock_kind: recorded_execution_snapshots
+freeze_date: 2026-08-12
+python: 3.12.13
+random_seed: 20260812
+required_environment:
+  MKL_THREADING_LAYER: SEQUENTIAL
+  MKL_NUM_THREADS: "1"
+  OMP_NUM_THREADS: "1"
+  PYTHONHASHSEED: "20260812"
+snapshots:
+  final_model_artifact:
+    purpose: final compact-model serialization and external scoring
+    packages:
+      numpy: 2.5.1
+      pandas: 3.0.3
+      scikit-learn: 1.9.0
+      joblib: 1.5.3
+  closeout_and_publication_qa:
+    purpose: final closeout tables, figures, and release QA
+    packages:
+      numpy: 2.3.5
+      pandas: 3.0.1
+      Pillow: 12.2.0
+  repeated_measures_notebook:
+    purpose: recorded version from the repeated-measures feasibility run
+    packages:
+      statsmodels: 0.14.6
+scope_note: >-
+  These are the exact versions preserved in the frozen execution records. The
+  project used stage-specific environments, so this file does not claim that one
+  solver environment produced every historical artifact. Packages without a
+  preserved version record are intentionally not guessed.
